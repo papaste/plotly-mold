@@ -1,3 +1,3 @@
-YAML-code to generate a plotly scatter diagram in Home Assistant based on temperature and relative humidity sensors.
+YAML-kod för att generera ett plotly scatter diagram i Home Assistant baserat på temperatur och relativ fuktighet från olika sensorer.
 
-Requires: https://github.com/dbuezas/lovelace-plotly-graph-card
+Kräver: https://github.com/dbuezas/lovelace-plotly-graph-card
