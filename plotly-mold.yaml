@@ -1,0 +1,189 @@
+type: custom:plotly-graph
+entities:
+  - entity: sensor.esp8266_vinden_vinden_temperatur #Ändra till din temperatursensor!
+    internal: true
+    filters:
+      - resample: 1d
+    fn: $fn ({ xs, ys, vars }) => { vars.temp = ys; vars.xs = xs; }
+  - entity: sensor.esp8266_vinden_vinden_luftfuktighet #Ändra till din luftfuktighetssensor!
+    internal: true
+    filters:
+      - resample: 1d
+    fn: $fn ({ ys, vars }) => vars.humidity = ys
+  - entity: ""
+    x: $fn ({ vars }) => vars.temp.slice(0, -1)
+    "y": $fn ({ vars }) => vars.humidity.slice(0, -1)
+    mode: markers
+    marker:
+      size: 7
+      color: black
+      line:
+        color: white
+        width: 2
+      opacity: 0.8
+    line:
+      color: rgba(50, 50, 217, 0.5)
+      width: 3
+      opacity: 0.8
+  - entity: ""
+    x: $fn ({ vars }) => [vars.temp[vars.temp.length - 1]]
+    "y": $fn ({ vars }) => [vars.humidity[vars.humidity.length - 1]]
+    mode: markers
+    marker:
+      size: 12
+      color: red
+      symbol: circle
+      line:
+        color: white
+        width: 2
+      opacity: 1
+hours_to_show: 8760
+raw_plotly_config: true
+layout:
+  margin:
+    l: 60
+    r: 220
+    t: 10
+    b: 70
+  showlegend: false
+  xaxis:
+    title: Temperatur [°C]
+    range:
+      - -10
+      - 60
+    tickangle: 0
+    dtick: 10
+  yaxis:
+    title: Relativ luftluftighet [%]
+    range:
+      - 75
+      - 100
+    tickangle: 0
+  height: 100%
+  width: 100%
+  shapes:
+    - type: path
+      path: >-
+        M 3 100 L 4 98 L 5 97 L 6 96 L 7 95.5 L 8 94.7 L 9 94.2 L 10 93.6 L 12
+        92.8 L 15 92 L 20 90.6 L 25 89.5 L 30 88.6 L 40 87.6 L 50 86.7  L 50 100
+        L 1 100 L 2 97 L 3 95 L 4 93.5 L 5 92.5 L 6 91.5 L 7 90.7 L 8 90.1 L 9
+        89.5 L 10 89 L 12 88.1 L 15 87 L 20 85.6 L 25 84.5 L 30 83.5 L 40 82 L
+        50 80.7 L 50 100 Z
+      fillcolor: rgba(255, 165, 0, 0.3)
+      line:
+        color: rgba(255, 165, 0, 0.5)
+    - type: path
+      path: >-
+        M 0 100 L 1 97.5 L 2 95 L 3 92.5 L 4 90.5 L 5 88.5 L 6 87 L 7 85.5 L 8
+        84.2 L 9 83 L 10 82 L 12 80.8 L 15 79.5 L 20 79 L 50 79 L 50 100 L 1 100
+        L 2 97 L 3 95 L 4 93.5 L 5 92.5 L 6 91.5 L 7 90.7 L 8 90.1 L 9 89.5 L 10
+        89 L 12 88.1 L 15 87 L 20 85.6 L 25 84.5 L 30 83.5 L 40 82 L 50 80.7 L
+        50 100 Z
+      fillcolor: rgba(255, 255, 0, 0.3)
+      line:
+        color: rgba(255, 255, 0, 0.5)
+    - type: path
+      path: M 50 75 L 60 75 L 60 100 L 50 100 Z
+      fillcolor: rgba(0, 255, 0, 0.1)
+      line:
+        color: rgba(0, 255, 0, 0.1)
+    - type: path
+      path: >-
+        M 0 100 L 1 97.5 L 2 95 L 3 92.5 L 4 90.5 L 5 88.5 L 6 87 L 7 85.5 L 8
+        84.2 L 9 83 L 10 82 L 12 80.8 L 15 79.5 L 20 79 L 50 79 L 50 75 L 0 75 Z
+      fillcolor: rgba(0, 255, 0, 0.1)
+      line:
+        color: rgba(0, 255, 0, 0.1)
+    - type: path
+      path: M -10 75 L 0 75 L 0 100 L -10 100 Z
+      fillcolor: rgba(0, 255, 0, 0.1)
+      line:
+        color: rgba(0, 255, 0, 0.1)
+    - type: path
+      path: >-
+        M 3 100 L 4 98 L 5 97 L 6 96 L 7 95.5 L 8 94.7 L 9 94.2 L 10 93.6 L 12
+        92.8 L 15 92 L 20 90.6 L 25 89.5 L 30 88.6 L 40 87.6 L 50 86.7 L 50 100
+        L 3 100 Z
+      fillcolor: rgba(255, 0, 0, 0.3)
+      line:
+        color: rgba(255, 0, 0, 0.5)
+  annotations:
+    - x: 30
+      "y": 94
+      text: Uh-oh
+      showarrow: false
+      font:
+        size: 14
+        color: red
+      align: center
+      bgcolor: white
+      borderpad: 4
+      bordercolor: red
+      borderwidth: 2
+    - x: 34
+      "y": 86
+      text: Tillväxt (4-8v)
+      showarrow: false
+      font:
+        size: 10
+        color: red
+      align: center
+      bgcolor: white
+      borderpad: 4
+      bordercolor: orange
+      borderwidth: 2
+    - x: 27
+      "y": 81
+      text: Tillväxt möjlig
+      showarrow: false
+      font:
+        size: 10
+        color: red
+      align: center
+      bgcolor: white
+      borderpad: 4
+      bordercolor: yellow
+      borderwidth: 2
+    - x: 55
+      "y": 95
+      text: För varmt
+      showarrow: false
+      font:
+        size: 12
+        color: black
+      align: center
+      textangle: 90
+      bgcolor: white
+      borderpad: 4
+      bordercolor: green
+      borderwidth: 2
+    - x: -5
+      "y": 95.5
+      text: För kallt
+      showarrow: false
+      font:
+        size: 12
+        color: black
+      align: center
+      textangle: 90
+      bgcolor: white
+      borderpad: 4
+      bordercolor: green
+      borderwidth: 2
+    - x: 27
+      "y": 77
+      text: För torrt
+      showarrow: false
+      font:
+        size: 12
+        color: black
+      align: center
+      bgcolor: white
+      borderpad: 4
+      bordercolor: green
+      borderwidth: 2
+scene:
+  xaxis:
+    title: Temperature (°C)
+  yaxis:
+    title: Humidity (%)
