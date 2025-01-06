@@ -62,7 +62,7 @@ layout:
   height: 100%
   width: 100%
   shapes:
-    - type: path
+    - type: path #tillväxt 4-8 veckor
       path: >-
         M 3 100 L 4 98 L 5 97 L 6 96 L 7 95.5 L 8 94.7 L 9 94.2 L 10 93.6 L 12
         92.8 L 15 92 L 20 90.6 L 25 89.5 L 30 88.6 L 40 87.6 L 50 86.7  L 50 100
@@ -72,7 +72,7 @@ layout:
       fillcolor: rgba(255, 165, 0, 0.3)
       line:
         color: rgba(255, 165, 0, 0.5)
-    - type: path
+    - type: path #tillväxt möjlig
       path: >-
         M 0 100 L 1 97.5 L 2 95 L 3 92.5 L 4 90.5 L 5 88.5 L 6 87 L 7 85.5 L 8
         84.2 L 9 83 L 10 82 L 12 80.8 L 15 79.5 L 20 79 L 50 79 L 50 100 L 1 100
@@ -82,24 +82,24 @@ layout:
       fillcolor: rgba(255, 255, 0, 0.3)
       line:
         color: rgba(255, 255, 0, 0.5)
-    - type: path
-      path: M 50 75 L 60 75 L 60 100 L 50 100 Z
+    - type: path #för varmt
+      path: M 50 75 L 60 75 L 60 100 L 50 100 Z #M 50 75 L 60 75 - 75 styr i detta fall nedre kanten, ändra 75 till din axis-limit.
       fillcolor: rgba(0, 255, 0, 0.1)
       line:
         color: rgba(0, 255, 0, 0.1)
-    - type: path
-      path: >-
+    - type: path #för torrt
+      path: >- #L 50 75 L 0 75 Z mot slutet styr i detta fall nedre kanten, ändra 75 till din axis-limit.
         M 0 100 L 1 97.5 L 2 95 L 3 92.5 L 4 90.5 L 5 88.5 L 6 87 L 7 85.5 L 8
         84.2 L 9 83 L 10 82 L 12 80.8 L 15 79.5 L 20 79 L 50 79 L 50 75 L 0 75 Z
       fillcolor: rgba(0, 255, 0, 0.1)
       line:
         color: rgba(0, 255, 0, 0.1)
-    - type: path
-      path: M -10 75 L 0 75 L 0 100 L -10 100 Z
+    - type: path #för kallt
+      path: M -10 75 L 0 75 L 0 100 L -10 100 Z #-10 75 L 0 75 - 75 styr i detta fall nedre kanten, ändra 75 till din axis-limit.
       fillcolor: rgba(0, 255, 0, 0.1)
       line:
         color: rgba(0, 255, 0, 0.1)
-    - type: path
+    - type: path #Uh-oh
       path: >-
         M 3 100 L 4 98 L 5 97 L 6 96 L 7 95.5 L 8 94.7 L 9 94.2 L 10 93.6 L 12
         92.8 L 15 92 L 20 90.6 L 25 89.5 L 30 88.6 L 40 87.6 L 50 86.7 L 50 100
